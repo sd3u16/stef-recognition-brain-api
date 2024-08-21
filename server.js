@@ -23,7 +23,7 @@ app.use(express.json()); // latest version of exressJS now comes with Body-Parse
 // Test only - when you have a database variable you want to use
 // app.get('/', (req, res)=> {
 //   res.send(database.users);
-// })
+// }) 
 
 app.post('/signin', (req, res) => {
   db.select('email', 'hash').from('login')
