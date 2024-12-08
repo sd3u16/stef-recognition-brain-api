@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 const express = require('express');
 const bodyParser = require('body-parser'); // latest version of exressJS now comes with Body-Parser!
 const bcrypt = require('bcrypt-nodejs');
@@ -5,14 +8,7 @@ const cors = require('cors');
 const knex = require('knex')
 const { ClarifaiStub, grpc } = require('clarifai-nodejs-grpc');
 
-const db = knex({
-  // Enter your own database information here based on what you created
-  client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false } // Required for Neon
-  }
-});
+const db = require('./db');
 
 const app = express();
 
@@ -143,5 +139,5 @@ app.put('/image', (req, res) => {
 })
 
 
-module.exports = { app, db };
+module.exports = app;
 
